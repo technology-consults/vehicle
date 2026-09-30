@@ -1,0 +1,3 @@
+# Deliberate-act escape hatch for the matching gate.
+# One repo-relative path per line, or a directory prefix ending in "/".
+# Lines starting with # are comments. Empty means no exemptions.

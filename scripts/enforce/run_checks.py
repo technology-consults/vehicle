@@ -11,8 +11,10 @@ Usage:
 With no file arguments, each check scans its own default (git-tracked
 files).
 
-Until vehicle has a commit.py gate, invoke this by hand before every
-commit. (Wiring gap, reported 2026-09-30.)
+This is the ad-hoc whole-tree scanner. The gated commit path is
+scripts/commit.py, which runs the unit tier and then the full
+scripts/enforce/ gate suite (coding_standards, security,
+owner_guidelines) over the commit's added lines before anything lands.
 """
 import os
 import subprocess

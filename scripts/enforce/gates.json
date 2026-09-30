@@ -1,0 +1,88 @@
+{
+ "description": "Machine-checkable inventory of the pre-commit enforcement suite. Mirrors each module's GATE_DEFS; a unit test enforces the match.",
+ "modules": {
+  "coding_standards": {
+   "gates": [
+    {
+     "allowlist": null,
+     "description": "every committed .py file must byte-compile",
+     "name": "py-compile"
+    },
+    {
+     "allowlist": "scripts/enforce/allowlist_dangerous.txt",
+     "description": "no eval/exec calls, os.system, subprocess shell mode, pickle deserialization, or unsafe yaml loading in added lines",
+     "name": "dangerous-calls"
+    },
+    {
+     "allowlist": "scripts/enforce/allowlist_style.txt",
+     "description": "no bare except clauses in added Python lines (name the exception)",
+     "name": "bare-except"
+    },
+    {
+     "allowlist": "scripts/enforce/allowlist_cache.txt",
+     "description": "no __pycache__ / .pyc / .pyo / .DS_Store paths in the diff",
+     "name": "no-cache"
+    },
+    {
+     "allowlist": "scripts/enforce/allowlist_notests.txt",
+     "description": "new def/class in code dirs needs a test file in the same diff",
+     "name": "tests-with-code"
+    }
+   ],
+   "script": "scripts/enforce/coding_standards.py"
+  },
+  "owner_guidelines": {
+   "gates": [
+    {
+     "allowlist": "scripts/enforce/allowlist_rawgithub.txt",
+     "description": "no raw-file CDN fetches: all GitHub reads go through api.github.com",
+     "name": "no-raw-github"
+    },
+    {
+     "allowlist": "scripts/enforce/allowlist_gitops.txt",
+     "description": "no local pushes in scripts: GitHub is API-only",
+     "name": "no-git-push"
+    },
+    {
+     "allowlist": "scripts/enforce/allowlist_media.txt",
+     "description": "video files never go in git",
+     "name": "no-video"
+    },
+    {
+     "allowlist": "scripts/enforce/allowlist_pdfs.txt",
+     "description": "committed PDFs are the single combined <name>-documentation.pdf",
+     "name": "pdf-naming"
+    },
+    {
+     "allowlist": "scripts/enforce/allowlist_docs_home.txt",
+     "description": "new markdown under docs/ belongs under docs/technical/",
+     "name": "docs-home"
+    }
+   ],
+   "script": "scripts/enforce/owner_guidelines.py"
+  },
+  "security": {
+   "gates": [
+    {
+     "allowlist": null,
+     "description": "key-looking content in added lines: AWS key IDs, PEM headers, credential assignments with quoted values",
+     "name": "secrets"
+    },
+    {
+     "allowlist": "scripts/enforce/allowlist_logging.txt",
+     "description": "credential values must never be printed or logged",
+     "name": "token-in-log"
+    }
+   ],
+   "script": "scripts/enforce/security.py"
+  }
+ },
+ "order": [
+  "coding_standards",
+  "security",
+  "owner_guidelines"
+ ],
+ "ruleset_version": "1.0.0",
+ "unit_tests_baseline": 244,
+ "updated": "2026-09-30"
+}
