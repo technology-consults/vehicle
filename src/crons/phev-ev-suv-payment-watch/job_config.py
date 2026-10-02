@@ -199,13 +199,19 @@ def baseline_text():
 # --------------------------------------------------------------------------
 def source_rules():
     return (
-        "SOURCE RULE (standing user rule, 2026-10-02): manufacturer "
-        "websites ONLY - each brand's own site and build-and-price "
-        "configurator. NEVER open, cite, or link dealership websites or "
-        "dealer mirrors, even Ontario ones. If a candidate has no "
-        "manufacturer configurator that can produce the required "
-        "lease/finance figures, mark it unverifiable - never substitute "
-        "dealer data.")
+        "SOURCE RULE (standing user rule, 2026-10-02; refined same day): "
+        "prefer manufacturer websites - each brand's own site and "
+        "build-and-price configurator is the first and preferred source. "
+        "If the manufacturer's site has no configurator or data that can "
+        "produce the required lease/finance figures, dealership websites "
+        "may be used as a fallback - but ONLY dealers within a 50 km "
+        "radius of postal code L6Y 0Z4, Ontario (Brampton area). Confirm "
+        "the dealer's location from the dealer's own site (address / "
+        "directions page); if the location cannot be confirmed in-radius, "
+        "do not use it. Always label dealer-sourced figures as "
+        "dealer-sourced. If neither manufacturer nor in-radius dealer data "
+        "exists, mark the candidate unverifiable - never substitute "
+        "out-of-radius dealer data.")
 
 
 def research_task(state):

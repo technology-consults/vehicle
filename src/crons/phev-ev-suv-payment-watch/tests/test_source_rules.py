@@ -19,6 +19,12 @@ class SourceRulesTest(unittest.TestCase):
         self.assertIn("dealer", text)
         self.assertIn("never", text)
 
+    def test_rule_text_has_fallback_radius(self):
+        text = J.source_rules()
+        self.assertIn("50 km", text)
+        self.assertIn("L6Y 0Z4", text)
+        self.assertIn("dealer-sourced", text.lower())
+
     def test_research_prompt_carries_source_rule(self):
         prompt = J.research_task({"long_date": "Friday, October 2, 2026"})
         self.assertIn(J.source_rules(), prompt)
