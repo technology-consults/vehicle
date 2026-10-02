@@ -197,12 +197,24 @@ def baseline_text():
 # --------------------------------------------------------------------------
 # Step prompts + schemas
 # --------------------------------------------------------------------------
+def source_rules():
+    return (
+        "SOURCE RULE (standing user rule, 2026-10-02): manufacturer "
+        "websites ONLY - each brand's own site and build-and-price "
+        "configurator. NEVER open, cite, or link dealership websites or "
+        "dealer mirrors, even Ontario ones. If a candidate has no "
+        "manufacturer configurator that can produce the required "
+        "lease/finance figures, mark it unverifiable - never substitute "
+        "dealer data.")
+
+
 def research_task(state):
     return "\n\n".join([
         "You are the RESEARCH worker for the versioned cron job "
         "\"phev-ev-suv-payment-watch\" (Ontario EV SUV payment-only scan). "
         "Today is %s (America/Toronto)." % state["long_date"],
         worker_conduct(),
+        source_rules(),
         "GOAL: research current manufacturer lease and finance special "
         "offers in ONTARIO, Canada for fully electric (BEV) SUVs/crossovers. "
         "This scan has NO rate requirement - it is about payment only.",
