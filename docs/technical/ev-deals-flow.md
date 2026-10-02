@@ -1,6 +1,6 @@
 # EV Deals Flow — Ontario EV SUV daily scan
 
-_Created: 2026-09-30 · Last modified: 2026-09-30_
+_Created: 2026-09-30 · Last modified: 2026-10-02_
 
 Plain words first: every morning, two automatic scans look for electric-SUV deals in Ontario and report back. This page is the map — it tells you where every piece of that flow lives. The actual instructions each scan follows live in the versioned job packages in this repo (see "Where the logic lives" below); the scheduler's saved definitions carry only the schedule, the delivery target, and the pinned package version.
 
@@ -31,7 +31,7 @@ Both scans are cron jobs owned by the goal `sub-3-phev-ev-suv-deal-in-ontario` (
 
 **Rate scan (8:00)** also requires: interest rate below 3% APR, and bi-weekly payment in the $150–$200 band — checked on three setups per candidate: 48-month lease (20,000 km/yr), 72-month finance, 84-month finance. A deal qualifies if **any** setup meets all four criteria. If nothing qualifies, it reports the most tempting near-misses (max 3, up to $260 bi-weekly).
 
-**Payment-only scan (8:42)** drops the rate requirement (APR shown for reference only) and checks two setups per candidate: 48-month lease qualifies at ≤ $265 bi-weekly, 72-month finance qualifies at ≤ $365 bi-weekly. A deal qualifies if **any** setup meets the criteria.
+**Payment-only scan (8:42)** drops the rate requirement (APR shown for reference only) and checks two setups per candidate: 48-month lease qualifies at ≤ $265 bi-weekly, 72-month finance qualifies at ≤ $365 bi-weekly. A deal qualifies if **any** setup meets the criteria. Sources (standing rule 2026-10-02): manufacturer build-and-price configurators are preferred; dealership websites are a fallback only — within 50 km of postal code L6Y 0Z4, Ontario, location confirmed from the dealer's own site, figures labeled dealer-sourced. Out-of-radius dealer data is never used; otherwise the candidate is marked unverifiable.
 
 ## Outputs
 
