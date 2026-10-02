@@ -196,12 +196,30 @@ def baseline_text():
 # --------------------------------------------------------------------------
 # Step prompts + schemas
 # --------------------------------------------------------------------------
+def source_rules():
+    return (
+        "SOURCE RULE (standing user rule, 2026-10-02; refined same day): "
+        "prefer manufacturer websites - each brand's own site and "
+        "build-and-price configurator is the first and preferred source. "
+        "If the manufacturer's site has no configurator or data that can "
+        "produce the required lease/finance figures, dealership websites "
+        "may be used as a fallback - but ONLY dealers within a 50 km "
+        "radius of postal code L6Y 0Z4, Ontario (Brampton area). Confirm "
+        "the dealer's location from the dealer's own site (address / "
+        "directions page); if the location cannot be confirmed in-radius, "
+        "do not use it. Always label dealer-sourced figures as "
+        "dealer-sourced. If neither manufacturer nor in-radius dealer data "
+        "exists, mark the candidate unverifiable - never substitute "
+        "out-of-radius dealer data.")
+
+
 def research_task(state):
     return "\n\n".join([
         "You are the RESEARCH worker for the versioned cron job "
         "\"phev-ev-suv-deal-watch\" (Ontario EV SUV deal scan, RATE-BASED). "
         "Today is %s (America/Toronto)." % state["long_date"],
         worker_conduct(),
+        source_rules(),
         "GOAL: research current manufacturer lease and finance special "
         "offers in ONTARIO, Canada for fully electric (BEV) SUVs/crossovers.",
         criteria_text(),
