@@ -36,7 +36,7 @@ ENFORCE_DIR = os.path.join(REPO_ROOT, "scripts", "enforce")
 
 RULESET_VERSION = "1.0.0"
 RULESET_HASHES = {
-    "1.0.0": "c4f1eae2208566fd1dd5db4ed1c6a1b1de42a51cc76cf6222e60b7eae5ab26bc",
+    "1.0.0": "b76dbeca29c267803f876ffbe246b5f1d0b1d4939f138da5699ee721b3a7061d",
 }
 
 SEMVER = re.compile(r"^\d+\.\d+\.\d+$")

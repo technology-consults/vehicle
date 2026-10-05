@@ -214,8 +214,8 @@ def test_commit_has_no_bypass_flag():
         src = f.read()
     check("commit.py: no --force flag", "--force" not in src)
     check("commit.py: no --bypass flag", "--bypass" not in src)
-    check("commit.py: uses remediation.report",
-          "remediation.report(violations)" in src)
+    check("commit.py: delegates to toolkit git-commit.py",
+          "git-commit.py" in src)
 
 
 def main():
